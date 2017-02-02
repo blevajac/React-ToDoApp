@@ -22,7 +22,7 @@ module.exports = {
     },
     resolve: {
         root: __dirname,
-        //prije se trebalčo sve bacati u alias sada samo navedeš u kojemfile us nalaze komponente i on ih sam nađe
+        //prije se trebalčo sve bacati u alias sada samo navedeš u kojem file us nalaze komponente i on ih sam nađe
         modulesDirectories: [
               //components
               'node_modules',
