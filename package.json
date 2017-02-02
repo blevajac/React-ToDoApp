@@ -1,7 +1,7 @@
 {
   "name": "boilerplate",
   "version": "1.0.0",
-  "description": "Jednostavni poćetni React App",
+  "description": "Jednostavna React ToDoAplikacija",
   "main": "index.js",
   "scripts": {
     "test": "karma start",

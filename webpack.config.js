@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
     entry: [
       'script!jquery/dist/jquery.min.js',
-      'script!foundation-sites/dist/foundation.min.js',
+      'script!foundation-sites/dist/js/foundation.min.js',
       './app/app.jsx'
     ],
     externals: {
@@ -22,12 +22,16 @@ module.exports = {
     },
     resolve: {
         root: __dirname,
-      alias: {
-          aplicationStyles: 'app/styles/app.scss'
-        //components
-
-      },
-      extensions: ['', '.js', '.jsx']
+        //prije se trebalčo sve bacati u alias sada samo navedeš u kojemfile us nalaze komponente i on ih sam nađe
+        modulesDirectories: [
+              //components
+              'node_modules',
+              './app/components'
+        ],
+        alias: {
+              applicationStyles: 'app/styles/app.scss'
+        },
+        extensions: ['', '.js', '.jsx']
     },
     module: {
       loaders: [
@@ -50,4 +54,5 @@ module.exports = {
       ]
     },
     devtool: 'inline-source-map'
+    //devtool: 'cheap-module-eval-source-map'
 };
