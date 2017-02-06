@@ -2,10 +2,13 @@ var React = require('react');
 //komponente
 var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
+var TodoSearch = require('TodoSearch');
 
 var TodoApp = React.createClass({
   getInitialState: function(){      //vraća default stanje applikacije
     return{
+          showCompleted: false,
+          searcText: '',
           todos: [
             {
                 id: 1,
@@ -31,13 +34,20 @@ var TodoApp = React.createClass({
       alert('new todo: ' + text);
 
   },
+  handleSearch: function(showCompleted, searcText){
+      this.setState({
+        showCompleted: showCompleted,
+        searcText: searcText.toLowerCase()
+      })
+  },
   render: function () {
     var {todos} = this.state;   //dohvaća state todos
 
     return (
       <div>
+        <TodoSearch onSearch={this.handleSearch} />
         <TodoList todos={todos}/> {/*renderira TodoList komponentu */}
-        <AddTodo onAddTodo={this.handleAddTodo}/>  
+        <AddTodo onAddTodo={this.handleAddTodo}/>
       </div>
     );
   }
