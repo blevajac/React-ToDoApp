@@ -1,4 +1,7 @@
 var React = require('react');
+var uuid = require('node-uuid');    //UUID - Univezalni unikatni idetifikator
+
+
 //komponente
 var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
@@ -11,19 +14,19 @@ var TodoApp = React.createClass({
           searcText: '',
           todos: [
             {
-                id: 1,
+                id: uuid(),
                 text: 'Prošeći zeca'
             }, {
-                id: 2,
+                id: uuid(),
                 text: 'Posaugaj kuću'
             }, {
-                id: 3,
+                id: uuid(),
                 text: 'Odi do dućana'
             }, {
-                id: 4,
+                id: uuid(),
                 text: 'Nazovi svoje'
             }, {
-                id: 5,
+                id: uuid(),
                 text: 'Jasmina zamolba'
             }
 
@@ -31,8 +34,15 @@ var TodoApp = React.createClass({
     };
   },
   handleAddTodo: function (text){   //javlja kada se unese novi todo
-      alert('new todo: ' + text);
-
+      this.setState({
+          todos: [
+              ...this.state.todos,
+              {
+                id: uuid(),      //id polje mora biti unikatno
+                text: text
+              }
+          ]
+      });
   },
   handleSearch: function(showCompleted, searcText){
       this.setState({
