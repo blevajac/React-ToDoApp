@@ -12,7 +12,7 @@ var TodoList = React.createClass({
               return todos.map((todo) => {  //todos iz TodoApp
               //iterira kroz polje i vraća polje jsx (vraća vrijednost), za svako todo polje vraća novo jsx koji će biti prikazan na ekranu                    //.map - uzima funkciju i zove ju za svaki element u polju i sve što vrati se zamjeni (1,2,3 a u .map imam +1 postane 2,3,4)
                     return (
-                            <Todo key={todo.id} {...todo}/> //key prop koristi react da pazi na razlićite elemente
+                            <Todo key={todo.id} {...todo} onToggle={this.props.onToggle}/> //key prop koristi react da pazi na razlićite elemente
                         );
                     });
           };

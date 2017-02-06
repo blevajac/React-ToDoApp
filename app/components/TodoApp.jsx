@@ -15,23 +15,39 @@ var TodoApp = React.createClass({
           todos: [
             {
                 id: uuid(),
-                text: 'Prošeći zeca'
+                text: 'Prošeći zeca',
+                completed: false
             }, {
                 id: uuid(),
-                text: 'Posaugaj kuću'
+                text: 'Posaugaj kuću',
+                completed: true
             }, {
                 id: uuid(),
-                text: 'Odi do dućana'
+                text: 'Odi do dućana',
+                completed: true
             }, {
                 id: uuid(),
-                text: 'Nazovi svoje'
+                text: 'Nazovi svoje',
+                completed: false
             }, {
                 id: uuid(),
-                text: 'Jasmina zamolba'
+                text: 'Jasmina zamolba',
+                completed: false
             }
 
           ]
     };
+  },
+  handleToggle: function(id){
+      //pronalazi item iz todo polja i mijenja njen status
+      var updateTodos = this.state.todos.map((todo) => {  //map updata sva polja u polju
+          if(todo.id === id){
+            todo.completed = !todo.completed; //ako 'TRUE' postane 'FALSE'
+          }
+          return todo;
+      });
+
+      this.setState({todos: updateTodos});
   },
   handleAddTodo: function (text){   //javlja kada se unese novi todo
       this.setState({
@@ -56,7 +72,7 @@ var TodoApp = React.createClass({
     return (
       <div>
         <TodoSearch onSearch={this.handleSearch} />
-        <TodoList todos={todos}/> {/*renderira TodoList komponentu */}
+        <TodoList todos={todos} onToggle={this.handleToggle}/> {/*renderira TodoList komponentu */}
         <AddTodo onAddTodo={this.handleAddTodo}/>
       </div>
     );
