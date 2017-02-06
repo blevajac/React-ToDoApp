@@ -6,37 +6,18 @@ var uuid = require('node-uuid');    //UUID - Univezalni unikatni idetifikator
 var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
 var TodoSearch = require('TodoSearch');
+var TodoAPI = require('TodoAPI');
 
 var TodoApp = React.createClass({
   getInitialState: function(){      //vraća default stanje applikacije
     return{
           showCompleted: false,
           searcText: '',
-          todos: [
-            {
-                id: uuid(),
-                text: 'Prošeći zeca',
-                completed: false
-            }, {
-                id: uuid(),
-                text: 'Posaugaj kuću',
-                completed: true
-            }, {
-                id: uuid(),
-                text: 'Odi do dućana',
-                completed: true
-            }, {
-                id: uuid(),
-                text: 'Nazovi svoje',
-                completed: false
-            }, {
-                id: uuid(),
-                text: 'Jasmina zamolba',
-                completed: false
-            }
-
-          ]
+          todos: TodoAPI.getTodos()
     };
+  },
+  componentDidUpdate: function(){   //pokreće se kada se props ili state komponente izmjeni
+      TodoAPI.setTodos(this.state.todos);
   },
   handleToggle: function(id){
       //pronalazi item iz todo polja i mijenja njen status
