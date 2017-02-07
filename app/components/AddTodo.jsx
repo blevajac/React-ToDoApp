@@ -15,7 +15,7 @@ var AddTodo = React.createClass({
     },
     render: function(){
       return(
-          <div>
+          <div className="container__footer">
               <form ref="form" onSubmit={this.handleSubmit} className="todo-form">
                   <input type="text" ref="todoText" placeholder="Unesite novi zadataka za napraviti"/>
                   <button className="button expanded">Spremi zadatak</button>

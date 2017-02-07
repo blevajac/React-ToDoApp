@@ -6,6 +6,8 @@ var moment = require('moment');
 var Todo = React.createClass({
       render: function(){
           var {text, id, completed, createdAt, completedAt} = this.props;
+          var todoClassName = completed ? 'todo todo-completed' : 'todo';   //dodaje still zavisno dali je todo gotov ili ne
+
           var renderDate = () => {
               var message = 'Izrađeno: ';
               var timestamp = createdAt;
@@ -19,12 +21,16 @@ var Todo = React.createClass({
           };
 
           return(
-              <div onClick = {() => {           //click handler
+              <div className={todoClassName} onClick = {() => {           //click handler
                       this.props.onToggle(id);  //kada se stisne checkbox ili text on se bude pokrenuo
               }}>
-                  <input type="checkbox" checked={completed} />
-                  <p>{text}</p>
-                  <p>{renderDate()}</p>
+                  <div>
+                      <input type="checkbox" checked={completed} />
+                  </div>
+                  <div>
+                      <p>{text}</p>
+                      <p className="todo__subtext">{renderDate()}</p>
+                  </div>
               </div>
           )
       }
