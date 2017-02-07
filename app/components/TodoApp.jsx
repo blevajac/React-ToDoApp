@@ -1,6 +1,6 @@
 var React = require('react');
 var uuid = require('node-uuid');    //UUID - Univezalni unikatni idetifikator
-
+var moment = require('moment');
 
 //komponente
 var TodoList = require('TodoList');
@@ -24,6 +24,7 @@ var TodoApp = React.createClass({
       var updateTodos = this.state.todos.map((todo) => {  //map updata sva polja u polju
           if(todo.id === id){
             todo.completed = !todo.completed; //ako 'TRUE' postane 'FALSE'
+            todo.completedAt = todo.completed ? moment().unix() : undefined;  //postavlje vrijmeem kada je todo završen
           }
           return todo;
       });
@@ -36,7 +37,10 @@ var TodoApp = React.createClass({
               ...this.state.todos,
               {
                 id: uuid(),      //id polje mora biti unikatno
-                text: text
+                text: text,
+                completed: false,
+                createdAt: moment().unix(),
+                completedAt: undefined
               }
           ]
       });
