@@ -11,7 +11,7 @@ var TodoSearch = React.createClass({
         return (
             <div>
                     <div>
-                          <input type="search" ref="searcText" placeholder="Pronađite ToDo" onChange={this.handleSearch}/>
+                          <input type="search" ref="searchText" placeholder="Pronađite Todo stavke" onChange={this.handleSearch}/>
                     </div>
                     <div>
                           <lable>

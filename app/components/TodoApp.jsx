@@ -12,7 +12,7 @@ var TodoApp = React.createClass({
   getInitialState: function(){      //vraća default stanje applikacije
     return{
           showCompleted: false,
-          searcText: '',
+          searchText: '',
           todos: TodoAPI.getTodos()
     };
   },
@@ -41,19 +41,20 @@ var TodoApp = React.createClass({
           ]
       });
   },
-  handleSearch: function(showCompleted, searcText){
+  handleSearch: function(showCompleted, searchText){
       this.setState({
         showCompleted: showCompleted,
-        searcText: searcText.toLowerCase()
+        searchText: searchText.toLowerCase()
       })
   },
   render: function () {
-    var {todos} = this.state;   //dohvaća state todos
+    var {todos, showCompleted, searchText} = this.state;   //dohvaća state todos
+    var filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
     return (
       <div>
         <TodoSearch onSearch={this.handleSearch} />
-        <TodoList todos={todos} onToggle={this.handleToggle}/> {/*renderira TodoList komponentu */}
+        <TodoList todos={filterTodos} onToggle={this.handleToggle}/> {/*renderira TodoList komponentu */}
         <AddTodo onAddTodo={this.handleAddTodo}/>
       </div>
     );
