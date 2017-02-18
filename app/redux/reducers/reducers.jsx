@@ -1,7 +1,7 @@
 var uuid = require('node-uuid');
 var moment = require('moment');
 
-export var searchTest = (state = '', action) => {
+export var setSearchTest = (state = '', action) => {
       switch(action.type){
           case 'SET_SEARCH_TEST':
               return action.searchTest;

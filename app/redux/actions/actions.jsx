@@ -1,6 +1,6 @@
-export var setSeatchTest = (searchText) => {
+export var setSeatchText = (searchText) => {
     return {
-        type: 'SET_SEARCH_TEXT'
+        type: 'SET_SEARCH_TEXT',
         searchText
     };
 };
