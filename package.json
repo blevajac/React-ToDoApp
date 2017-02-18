@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "todoapp_react_redux_firebase",
   "version": "1.0.0",
-  "description": "Jednostavna React ToDoAplikacija",
+  "description": "Jednostavna React ToDoAplikacija uz pomoć Redux, Fierbase",
   "main": "index.js",
   "scripts": {
     "test": "karma start",
