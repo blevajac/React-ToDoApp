@@ -13,7 +13,7 @@ export var toggleShowCompleted = () => {
 
 export var addTodo = (text) => {
     return {
-        typr: 'ADD_TODO',
+        type: 'ADD_TODO',
         text
     }
 };

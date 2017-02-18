@@ -31,7 +31,8 @@ module.exports = {
         ],
         alias: {
               applicationStyles: 'app/styles/app.scss',
-              actions: 'app/redux/actions/actions.jsx'
+              actions: 'app/redux/actions/actions.jsx',
+              reducers: 'app/redux/reducers/reducers.jsx'
         },
         extensions: ['', '.js', '.jsx']
     },
