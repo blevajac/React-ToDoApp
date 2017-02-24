@@ -31,7 +31,7 @@ var TodoApp = React.createClass({
 
       this.setState({todos: updateTodos});
   },
-  handleAddTodo: function (text){   //javlja kada se unese novi todo
+  handleAddTodo: function (text){   //javlja kada se unese novi todo //text je u ovomslućaju input type iz AddTodo.jsx input filda u formi
       this.setState({
           todos: [
               ...this.state.todos,

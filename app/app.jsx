@@ -13,8 +13,9 @@ store.subscribe(() => {
 });
 
 store.dispatch(actions.addTodo('Poćisti gableca'));
-store.dispatch(actions.setSeatchText('gablec'));
+store.dispatch(actions.setSearchText('gablec'));
 store.dispatch(actions.toggleShowCompleted());
+
 // Load foundation
 $(document).foundation();
 
