@@ -6,19 +6,24 @@ var moment = require('moment');
 import TodoList from 'TodoList';
 import AddTodo from 'AddTodo';
 import TodoSearch from 'TodoSearch';
-var TodoAPI = require('TodoAPI');
+//var TodoAPI = require('TodoAPI');  Isto se briše
 
 var TodoApp = React.createClass({
-  getInitialState: function(){      //vraća default stanje applikacije
-    return{
-          showCompleted: false,
-          searchText: '',
-          todos: TodoAPI.getTodos()
-    };
-  },
-  componentDidUpdate: function(){   //pokreće se kada se props ili state komponente izmjeni
-      TodoAPI.setTodos(this.state.todos);
-  },
+  /*getInitialState više nije potreban jer Redux sada održava store
+          getInitialState: function(){      //vraća default stanje applikacije
+            return{
+                  showCompleted: false,
+                  searchText: '',
+                  todos: TodoAPI.getTodos()
+            };
+          },
+  */
+  /*componentDidUpdate sada to radi redux
+          componentDidUpdate: function(){   //pokreće se kada se props ili state komponente izmjeni
+              TodoAPI.setTodos(this.state.todos);
+          },
+  */
+  /*handleAddTodo postali akcije i reduceri
   handleAddTodo: function (text){   //javlja kada se unese novi todo //text je u ovomslućaju input type iz AddTodo.jsx input filda u formi
       this.setState({
           todos: [
@@ -39,9 +44,10 @@ var TodoApp = React.createClass({
         searchText: searchText.toLowerCase()
       })
   },
+  */
   render: function () {
-    var {todos, showCompleted, searchText} = this.state;   //dohvaća state todos
-    var filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
+    //var {todos, showCompleted, searchText} = this.state;   //dohvaća state todos
+    //var filterTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
     return (
       <div>
@@ -50,9 +56,9 @@ var TodoApp = React.createClass({
           <div className="row">
               <div className="column small-centered small-11 medium-6 large-5">
                   <div className="container">
-                    <TodoSearch onSearch={this.handleSearch} />
-                    <TodoList/> {/*renderira TodoList komponentu */}
-                    <AddTodo onAddTodo={this.handleAddTodo}/>
+                    <TodoSearch /> {/* onSearch={this.handleSearch}   */}
+                    <TodoList   /> {/* renderira TodoList komponentu  */}
+                    <AddTodo    /> {/* onAddTodo={this.handleAddTodo} */}
                   </div>
               </div>
           </div>
