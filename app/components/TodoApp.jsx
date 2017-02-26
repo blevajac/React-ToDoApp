@@ -3,9 +3,9 @@ var uuid = require('node-uuid');    //UUID - Univezalni unikatni idetifikator
 var moment = require('moment');
 
 //komponente
-var TodoList = require('TodoList');
-var AddTodo = require('AddTodo');
-var TodoSearch = require('TodoSearch');
+import TodoList from 'TodoList';
+import AddTodo from 'AddTodo';
+import TodoSearch from 'TodoSearch';
 var TodoAPI = require('TodoAPI');
 
 var TodoApp = React.createClass({
@@ -18,18 +18,6 @@ var TodoApp = React.createClass({
   },
   componentDidUpdate: function(){   //pokreće se kada se props ili state komponente izmjeni
       TodoAPI.setTodos(this.state.todos);
-  },
-  handleToggle: function(id){
-      //pronalazi item iz todo polja i mijenja njen status
-      var updateTodos = this.state.todos.map((todo) => {  //map updata sva polja u polju
-          if(todo.id === id){
-            todo.completed = !todo.completed; //ako 'TRUE' postane 'FALSE'
-            todo.completedAt = todo.completed ? moment().unix() : undefined;  //postavlje vrijmeem kada je todo završen
-          }
-          return todo;
-      });
-
-      this.setState({todos: updateTodos});
   },
   handleAddTodo: function (text){   //javlja kada se unese novi todo //text je u ovomslućaju input type iz AddTodo.jsx input filda u formi
       this.setState({
@@ -63,7 +51,7 @@ var TodoApp = React.createClass({
               <div className="column small-centered small-11 medium-6 large-5">
                   <div className="container">
                     <TodoSearch onSearch={this.handleSearch} />
-                    <TodoList todos={filterTodos} onToggle={this.handleToggle}/> {/*renderira TodoList komponentu */}
+                    <TodoList/> {/*renderira TodoList komponentu */}
                     <AddTodo onAddTodo={this.handleAddTodo}/>
                   </div>
               </div>

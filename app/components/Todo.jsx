@@ -1,11 +1,13 @@
 //Todo - zna kako renderirati jedan element liste
 //Renderira ga TodoLista komponent, ona će renderirati multipl todos koji je primila TodoLista
 var React = require('react');
+var {connect} = require('react-redux');
 var moment = require('moment');
+var actions = require('actions');
 
-var Todo = React.createClass({
+export var Todo = React.createClass({
       render: function(){
-          var {text, id, completed, createdAt, completedAt} = this.props;
+          var {text, id, completed, createdAt, completedAt, dispatch} = this.props;
           var todoClassName = completed ? 'todo todo-completed' : 'todo';   //dodaje still zavisno dali je todo gotov ili ne
 
           var renderDate = () => {
@@ -22,7 +24,8 @@ var Todo = React.createClass({
 
           return(
               <div className={todoClassName} onClick = {() => {           //click handler
-                      this.props.onToggle(id);  //kada se stisne checkbox ili text on se bude pokrenuo
+                      //this.props.onToggle(id);  //kada se stisne checkbox ili text on se bude pokrenuo
+                      dispatch(actions.toggleTodo(id));
               }}>
                   <div>
                       <input type="checkbox" checked={completed} />
@@ -36,4 +39,7 @@ var Todo = React.createClass({
       }
 });
 
-module.exports = Todo;
+//za testiranje
+export default connect(
+    //Todo netreba podatke, oni dolaze iz TodoList, on treba povez sa dispatch za akcije od Redux
+)(Todo);
