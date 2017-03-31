@@ -2,6 +2,7 @@
 var $ = require('jquery');
 
 module.exports = {
+  /*
     setTodos: function(todos){   //postavlja Todos u localStorage. Poziva se kada se postavlja novi ili togla novi todo
         if($.isArray(todos)){    //provjerava dali je polje []
             localStorage.setItem('todos', JSON.stringify(todos));   //JSON.stringify - metoda uzima array i pretvara u string
@@ -21,14 +22,15 @@ module.exports = {
         }
 
         return $.isArray(todos) ? todos : [];   //pojednostavljena verzija if else statmenta dole
-        /*
-            if($.isArray(todos)){
-              return todos;
-            }else {
-              return[];
-            }
-        */
+
+          //  if($.isArray(todos)){
+          //    return todos;
+          //  }else {
+          //    return [];
+          //  }
+
     },
+  */
     filterTodos: function(todos, showCompleted, searchText){
       var filteredTodos = todos;
 

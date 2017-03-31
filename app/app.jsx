@@ -9,6 +9,7 @@ var actions = require('actions');
 var store = require('configureStore').configure();
 var TodoAPI = require('TodoAPI');
 
+/* //localStorage code 
 store.subscribe(() => {
     var state = store.getState();
     console.log('New state', state);
@@ -18,6 +19,9 @@ store.subscribe(() => {
 //dispatch akcija koja inicijalizira aplikaciju sa postojećim podacima u localStorage
 var initialTodos = TodoAPI.getTodos();
 store.dispatch(actions.addTodos(initialTodos));
+*/
+
+store.dispatch(actions.startAddTodos());
 
 // Load foundation
 $(document).foundation();
