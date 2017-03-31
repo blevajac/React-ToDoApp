@@ -30,6 +30,7 @@ module.exports = {
               './app/api'
         ],
         alias: {
+              app: 'app',
               applicationStyles: 'app/styles/app.scss',
               actions: 'app/redux/actions/actions.jsx',
               reducers: 'app/redux/reducers/reducers.jsx',
@@ -48,7 +49,8 @@ module.exports = {
             compact: false
           },
           test: /\.jsx?$/,
-          exclude: /(node_modules | bower_components)/
+          exclude: /node_modules/
+          //  exclude: /(node_modules | bower_components)/   -> Stvaralo grešku sa firebase
         }
       ]
     },

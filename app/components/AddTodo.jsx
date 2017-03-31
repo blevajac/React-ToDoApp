@@ -9,8 +9,8 @@ export var AddTodo = React.createClass({
         var todoText = this.refs.todoText.value;  //dohvaća vrijednost u inputu pomoću refs
 
         if (todoText.length > 0) {
-            this.refs.todoText.value = '';        //isprazni input
-            dispatch(actions.addTodo(todoText));      //this.props.onAddTodo(todoText);
+            this.refs.todoText.value = '';                 //isprazni input
+            dispatch(actions.startAddTodo(todoText));      //this.props.onAddTodo(todoText);
         } else {
             this.refs.todoText.focus();     //ako nema valjane vrijednosti na stisku gumba automatski vraća cursor na input
         }
