@@ -33,7 +33,7 @@ export var todosReducer = (state = [], action) => {
                     return {
                         ...todo,
                         ...action.updates   //drugi spread operator (...) briše sve iste elemente unutar prvog (ali ostavlja ne iste)
-                    }                
+                    }
                 }else {
                   return todo;
                 }
@@ -47,3 +47,16 @@ export var todosReducer = (state = [], action) => {
             return state;
     }
 };
+
+export var authReducer = (state = {}, action) => {
+    switch(action.type){
+      case 'LOGIN':
+          return {
+              uid: action.uid
+          };
+      case 'LOGOUT':
+          return {};
+      default:
+          return state;
+    }
+}
