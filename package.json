@@ -4,7 +4,7 @@
   "description": "Jednostavna React ToDoAplikacija uz pomoć Redux, Fierbase",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test karma start",
+    "test": "cross-env NODE_ENV=test karma start",
     "build": "webpack -p",
     "start": "npm run build && node server.js"
   },
